@@ -17,9 +17,10 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(978, 671)
+        MainWindow.resize(972, 671)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
+        self.centralwidget.setAutoFillBackground(False)
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -31,16 +32,26 @@ class Ui_MainWindow(object):
         self.verticalLayout = QVBoxLayout(self.main_frame)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setSizeConstraint(QLayout.SetMaximumSize)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.Top = QFrame(self.main_frame)
         self.Top.setObjectName(u"Top")
         self.Top.setMaximumSize(QSize(16777215, 50))
+        self.Top.setStyleSheet(u"QtFrame : {\n"
+"background-color: rgb(52, 151, 204);\n"
+"}")
         self.Top.setFrameShape(QFrame.StyledPanel)
         self.Top.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.Top)
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setSizeConstraint(QLayout.SetMaximumSize)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.BtnLoadDf = QPushButton(self.Top)
+        self.BtnLoadDf.setObjectName(u"BtnLoadDf")
+
+        self.horizontalLayout_3.addWidget(self.BtnLoadDf)
+
         self.horizontalSpacer = QSpacerItem(871, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer)
@@ -48,6 +59,7 @@ class Ui_MainWindow(object):
         self.lbl_cur_pj = QLabel(self.Top)
         self.lbl_cur_pj.setObjectName(u"lbl_cur_pj")
         self.lbl_cur_pj.setMinimumSize(QSize(100, 0))
+        self.lbl_cur_pj.setAutoFillBackground(False)
 
         self.horizontalLayout_3.addWidget(self.lbl_cur_pj)
 
@@ -59,15 +71,20 @@ class Ui_MainWindow(object):
         self.body.setFrameShape(QFrame.StyledPanel)
         self.body.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.body)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setSizeConstraint(QLayout.SetMaximumSize)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.left_menu = QFrame(self.body)
         self.left_menu.setObjectName(u"left_menu")
         self.left_menu.setMaximumSize(QSize(90, 16777215))
+        self.left_menu.setStyleSheet(u"")
         self.left_menu.setFrameShape(QFrame.StyledPanel)
         self.left_menu.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.left_menu)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(3, 3, 3, 3)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.Btn_Menu_1 = QPushButton(self.left_menu)
         self.Btn_Menu_1.setObjectName(u"Btn_Menu_1")
         self.Btn_Menu_1.setMinimumSize(QSize(0, 60))
@@ -95,6 +112,7 @@ class Ui_MainWindow(object):
 
         self.Pages_Widget = QStackedWidget(self.body)
         self.Pages_Widget.setObjectName(u"Pages_Widget")
+        self.Pages_Widget.setAutoFillBackground(False)
         self.page_1 = QWidget()
         self.page_1.setObjectName(u"page_1")
         self.verticalLayout_5 = QVBoxLayout(self.page_1)
@@ -254,7 +272,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 978, 21))
+        self.menubar.setGeometry(QRect(0, 0, 972, 21))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -270,6 +288,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.BtnLoadDf.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0439", None))
         self.lbl_cur_pj.setText(QCoreApplication.translate("MainWindow", u"Cur_PJ", None))
         self.Btn_Menu_1.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.Btn_Menu_2.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))

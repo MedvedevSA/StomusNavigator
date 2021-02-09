@@ -1,17 +1,22 @@
 import sys
 import platform
-import Source.function as f 
+import os
+import gspread
+import pandas as pd
 
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
-# GUI FILE
-from ui_main import Ui_MainWindow
-from page1 import Ui_Page1
 
 # IMPORT FUNCTIONS
+from Source import *
+
+# GUI FILE
+
+from ui_main import Ui_MainWindow
+
 
 
 class MainWindow(QMainWindow):
@@ -19,12 +24,20 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        
+
+        self.DF = pd.DataFrame([])
+
+        ## TOP
+        ########################################################################
+
+        self.ui.BtnLoadDf.clicked.connect(lambda: DataFunc.get_data(self))
+
+
         ## PAGES
         ########################################################################
-        
+       
         # PAGE 1
-        self.ui_page1 = Ui_Page1(self.ui)
+        self.ui_page1 = Ui_Page1(self)
 
         # PAGE 2
         self.ui.Btn_Menu_2.clicked.connect(lambda: self.ui.Pages_Widget.setCurrentWidget(self.ui.page_2))
