@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(972, 671)
+        MainWindow.resize(972, 690)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setAutoFillBackground(False)
@@ -128,72 +128,111 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addItem(self.horizontalSpacer_2)
 
-        self.frame = QFrame(self.frame_4)
-        self.frame.setObjectName(u"frame")
-        self.frame.setMinimumSize(QSize(120, 150))
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_3 = QVBoxLayout(self.frame)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.rBtn_1_machine = QRadioButton(self.frame)
-        self.rBtn_1_machine.setObjectName(u"rBtn_1_machine")
-        self.rBtn_1_machine.setMinimumSize(QSize(0, 30))
-        self.rBtn_1_machine.setLayoutDirection(Qt.LeftToRight)
-
-        self.verticalLayout_3.addWidget(self.rBtn_1_machine)
-
-        self.rBtn_2_machine = QRadioButton(self.frame)
-        self.rBtn_2_machine.setObjectName(u"rBtn_2_machine")
-        self.rBtn_2_machine.setMinimumSize(QSize(0, 30))
-
-        self.verticalLayout_3.addWidget(self.rBtn_2_machine)
-
-        self.rBtn_3_machine = QRadioButton(self.frame)
-        self.rBtn_3_machine.setObjectName(u"rBtn_3_machine")
-        self.rBtn_3_machine.setMinimumSize(QSize(0, 30))
-
-        self.verticalLayout_3.addWidget(self.rBtn_3_machine)
-
-
-        self.horizontalLayout_4.addWidget(self.frame)
-
         self.frame_2 = QFrame(self.frame_4)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setMinimumSize(QSize(250, 0))
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
-        self.lbl_cur_info = QLabel(self.frame_2)
+        self.verticalLayout_8 = QVBoxLayout(self.frame_2)
+        self.verticalLayout_8.setSpacing(0)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.frame = QFrame(self.frame_2)
+        self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(120, 20))
+        self.frame.setMaximumSize(QSize(16777215, 30))
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_6 = QHBoxLayout(self.frame)
+        self.horizontalLayout_6.setSpacing(0)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.rBtn_1_machine = QRadioButton(self.frame)
+        self.rBtn_1_machine.setObjectName(u"rBtn_1_machine")
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.rBtn_1_machine.sizePolicy().hasHeightForWidth())
+        self.rBtn_1_machine.setSizePolicy(sizePolicy)
+        self.rBtn_1_machine.setMinimumSize(QSize(0, 20))
+        self.rBtn_1_machine.setLayoutDirection(Qt.LeftToRight)
+
+        self.horizontalLayout_6.addWidget(self.rBtn_1_machine)
+
+        self.rBtn_2_machine = QRadioButton(self.frame)
+        self.rBtn_2_machine.setObjectName(u"rBtn_2_machine")
+        self.rBtn_2_machine.setMinimumSize(QSize(0, 20))
+
+        self.horizontalLayout_6.addWidget(self.rBtn_2_machine)
+
+        self.rBtn_3_machine = QRadioButton(self.frame)
+        self.rBtn_3_machine.setObjectName(u"rBtn_3_machine")
+        self.rBtn_3_machine.setMinimumSize(QSize(0, 20))
+
+        self.horizontalLayout_6.addWidget(self.rBtn_3_machine)
+
+
+        self.verticalLayout_8.addWidget(self.frame)
+
+        self.groupBox = QGroupBox(self.frame_2)
+        self.groupBox.setObjectName(u"groupBox")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
+        self.groupBox.setSizePolicy(sizePolicy1)
+        self.verticalLayout_3 = QVBoxLayout(self.groupBox)
+        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalSpacer_4 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Maximum)
+
+        self.verticalLayout_3.addItem(self.verticalSpacer_4)
+
+        self.lbl_cur_info = QLabel(self.groupBox)
         self.lbl_cur_info.setObjectName(u"lbl_cur_info")
-        self.lbl_cur_info.setGeometry(QRect(30, 10, 231, 41))
+        font = QFont()
+        font.setFamily(u"Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setUnderline(True)
+        font.setWeight(75)
+        self.lbl_cur_info.setFont(font)
         self.lbl_cur_info.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_4.addWidget(self.frame_2)
+        self.verticalLayout_3.addWidget(self.lbl_cur_info)
 
-        self.frame_3 = QFrame(self.frame_4)
+        self.frame_3 = QFrame(self.groupBox)
         self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setMinimumSize(QSize(150, 150))
+        self.frame_3.setMinimumSize(QSize(150, 30))
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_4 = QVBoxLayout(self.frame_3)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_4.addItem(self.verticalSpacer_2)
-
+        self.horizontalLayout_7 = QHBoxLayout(self.frame_3)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.Btn_curOpenPj = QPushButton(self.frame_3)
         self.Btn_curOpenPj.setObjectName(u"Btn_curOpenPj")
-        self.Btn_curOpenPj.setMinimumSize(QSize(0, 40))
+        self.Btn_curOpenPj.setMinimumSize(QSize(0, 20))
 
-        self.verticalLayout_4.addWidget(self.Btn_curOpenPj)
+        self.horizontalLayout_7.addWidget(self.Btn_curOpenPj)
 
         self.Btn_curOpenDraw = QPushButton(self.frame_3)
         self.Btn_curOpenDraw.setObjectName(u"Btn_curOpenDraw")
-        self.Btn_curOpenDraw.setMinimumSize(QSize(0, 40))
+        self.Btn_curOpenDraw.setMinimumSize(QSize(0, 20))
 
-        self.verticalLayout_4.addWidget(self.Btn_curOpenDraw)
+        self.horizontalLayout_7.addWidget(self.Btn_curOpenDraw)
 
 
-        self.horizontalLayout_4.addWidget(self.frame_3)
+        self.verticalLayout_3.addWidget(self.frame_3)
+
+
+        self.verticalLayout_8.addWidget(self.groupBox)
+
+
+        self.horizontalLayout_4.addWidget(self.frame_2)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_3)
 
 
         self.verticalLayout_5.addWidget(self.frame_4)
@@ -216,6 +255,7 @@ class Ui_MainWindow(object):
         if (self.TablePlan.rowCount() < 20):
             self.TablePlan.setRowCount(20)
         self.TablePlan.setObjectName(u"TablePlan")
+        self.TablePlan.setMaximumSize(QSize(700, 100000))
         self.TablePlan.setRowCount(20)
         self.TablePlan.setColumnCount(3)
 
@@ -223,7 +263,8 @@ class Ui_MainWindow(object):
 
         self.frame_5 = QFrame(self.frame_6)
         self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setMinimumSize(QSize(200, 0))
+        self.frame_5.setMinimumSize(QSize(50, 0))
+        self.frame_5.setMaximumSize(QSize(100, 16777215))
         self.frame_5.setFrameShape(QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.verticalLayout_6 = QVBoxLayout(self.frame_5)
@@ -242,6 +283,36 @@ class Ui_MainWindow(object):
 
 
         self.horizontalLayout_5.addWidget(self.frame_5)
+
+        self.Journal_FRAME = QGroupBox(self.frame_6)
+        self.Journal_FRAME.setObjectName(u"Journal_FRAME")
+        self.Journal_FRAME.setEnabled(True)
+        self.Journal_FRAME.setMinimumSize(QSize(300, 0))
+        self.verticalLayout_7 = QVBoxLayout(self.Journal_FRAME)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.label = QLabel(self.Journal_FRAME)
+        self.label.setObjectName(u"label")
+        self.label.setMaximumSize(QSize(16777215, 20))
+
+        self.verticalLayout_7.addWidget(self.label)
+
+        self.BtnAddNote = QPushButton(self.Journal_FRAME)
+        self.BtnAddNote.setObjectName(u"BtnAddNote")
+
+        self.verticalLayout_7.addWidget(self.BtnAddNote)
+
+        self.Journal = QTextBrowser(self.Journal_FRAME)
+        self.Journal.setObjectName(u"Journal")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.Journal.sizePolicy().hasHeightForWidth())
+        self.Journal.setSizePolicy(sizePolicy2)
+
+        self.verticalLayout_7.addWidget(self.Journal)
+
+
+        self.horizontalLayout_5.addWidget(self.Journal_FRAME)
 
 
         self.verticalLayout_5.addWidget(self.frame_6)
@@ -288,7 +359,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.BtnLoadDf.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0439", None))
+        self.BtnLoadDf.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0438\u043d\u0445\u0440\u043e\u043d\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
         self.lbl_cur_pj.setText(QCoreApplication.translate("MainWindow", u"Cur_PJ", None))
         self.Btn_Menu_1.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.Btn_Menu_2.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
@@ -296,11 +367,15 @@ class Ui_MainWindow(object):
         self.rBtn_1_machine.setText(QCoreApplication.translate("MainWindow", u"#1 Nexturn", None))
         self.rBtn_2_machine.setText(QCoreApplication.translate("MainWindow", u"#2 Nexturn", None))
         self.rBtn_3_machine.setText(QCoreApplication.translate("MainWindow", u"#3 Tsugami", None))
-        self.lbl_cur_info.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u041d\u0430 N \u0441\u0442\u0430\u043d\u043a\u0435:</p><p>AN-ZEN-D6.0-WELDING-HOLDER</p></body></html>", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u041d\u0430 \u0441\u0442\u0430\u043d\u043a\u0435:", None))
+        self.lbl_cur_info.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>AN-ZEN-D6.0-WELDING-HOLDER</p></body></html>", None))
         self.Btn_curOpenPj.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0430\u043f\u043a\u0430 \u043f\u0440\u043e\u0435\u043a\u0442\u0430", None))
         self.Btn_curOpenDraw.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0430\u043f\u043a\u0430 \u0441 \u0447\u0435\u0440\u0442\u0435\u0436\u043e\u043c", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.Journal_FRAME.setTitle(QCoreApplication.translate("MainWindow", u"\u0416\u0443\u0440\u043d\u0430\u043b", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.BtnAddNote.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c", None))
         self.checkBox.setText(QCoreApplication.translate("MainWindow", u"CheckBox", None))
     # retranslateUi
 

@@ -5,7 +5,9 @@ class Ui_Page1(MainWindow):
         self.cur_MachineName = "#1 Nexturn"
         self.c_pj_plan = []
         self.plan_pj = []
-
+        
+        self.journal_path = ".\\Resurce\\journal.json"
+        
         #BIND
         self.ui = par.ui
         self.parent = par
@@ -28,11 +30,15 @@ class Ui_Page1(MainWindow):
 
         self.rBtn_Machine.buttonClicked.connect(self.rBtnClicked)
 
+
+        self.ui.BtnAddNote.clicked.connect(lambda: self.BtnAddNoteClicked())
+        self.updJournal()
+
     def Btn_c_OpenPjClicked(self):
         
         df = self.c_pj_plan
         path = df[['Путь в папке Production']].values.tolist()[0][0]
-        subprocess.Popen(f"explorer {path}")
+        self.getFileName(path)
 
 
     def upd_plan_info(self):
@@ -55,14 +61,25 @@ class Ui_Page1(MainWindow):
         
         list_df = df.values.tolist()
 
-        self.ui.TablePlan.setRowCount(len(list_df) + 1)
-
+        self.ui.TablePlan.setRowCount(len(list_df))
+        
+        max_with = []
+        for i in range(len(list_df[0])):
+            max_with.append(0)
+        
         for i in range(len(list_df)):
         # Добавление строки
-
             for j in range(len(list_df[0])):
-                #self.ui.TablePlan.setItem(i, j, QtGui.QTableWidgetItem(str(row[j])))
+                c_len = len(str(list_df[i][j]) )
+                
+                if max_with[j] < c_len:
+                    max_with[j] = c_len
+
                 self.ui.TablePlan.setItem(i, j, QTableWidgetItem(str(list_df[i][j])))
+
+        for col in range(0,len(list_df[0])):
+            self.ui.TablePlan.setColumnWidth(col, 8*max_with[col])
+        
 
     def upd_c_info(self):
         tmpDF = self.parent.DF
@@ -79,6 +96,8 @@ class Ui_Page1(MainWindow):
         self.upd_c_info()
         self.upd_plan_info()
 
+    def BtnAddNoteClicked(self):
+        self.add_note()
 
     def get_id_machine (self):
         convert = {
@@ -88,3 +107,60 @@ class Ui_Page1(MainWindow):
         }
         return convert[self.cur_MachineName]
 
+    def getFileName(self, def_path):
+        filename = ""
+        filename, filetype = QFileDialog.getOpenFileName(self.parent,
+                                "Выбрать файл",
+                                def_path,
+                                "Siemens NX(*.prt);;Pdf(*.pdf);;\
+                                Word(*.docm);;\
+                                MS Excel(*.xlsx);;Text file(*.txt);;All Files(*)")
+        if filename is not "":
+            path = Path(filename)
+            subprocess.Popen( ["explorer", path] )
+    
+    def add_note(self):
+        note = {
+            "prog":"Stas",
+            "date" : "12.12.21",
+            "note" : "Приплыли"
+        }
+        path = self.journal_path
+
+        journal = self.get_journal()
+        if journal == "":
+            journal = dict()
+            journal["data"] = []
+
+        journal["data"].append(note)
+
+        with open(path, 'w') as outfile:
+            json.dump(journal, outfile, indent=2)
+        
+        self.updJournal()
+    
+    def get_journal (self):
+        
+        path = self.journal_path
+        
+        try :
+            with open(path, "r") as read_file:
+                data = json.load(read_file)
+            
+            return data
+        except:
+            print("Alarm: crash with open journal")
+            return ""
+        
+
+    def updJournal(self):
+        text = self.get_journal()
+        print(text)
+
+        string = str()
+
+        for index in range(len(text['data'])):
+            string += text['data'][index]["note"] + '\n'
+
+
+        self.ui.Journal.setText(string)
