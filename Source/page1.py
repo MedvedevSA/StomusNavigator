@@ -36,28 +36,38 @@ class Ui_Page1(MainWindow):
 
 
     def upd_plan_info(self):
+        actual_col = [
+                        "Номер станка",
+                        "Производственный код",
+                        "Количество штук в партии"]
         tmpDF = self.parent.DF
         
         #tmpDF = tmpDF[tmpDF['Состояние'].str.contains("На станке",case=False, na=False)]     
-        tmpDF = tmpDF.loc[tmpDF['Состояние'].isin(["На станке"])]
+        tmpDF = tmpDF.loc[tmpDF['Состояние'].isin(["План"])]
         self.plan_pj = tmpDF.loc[tmpDF['Номер станка'].isin([self.get_id_machine()])]
         df = self.plan_pj
+        df = df[actual_col]
         
         headers = df.columns.values.tolist()
         self.ui.TablePlan.setColumnCount(len(headers))
+        
         self.ui.TablePlan.setHorizontalHeaderLabels(headers)
         
-        for i, row in df.iterrows():
-        # Добавление строки
-            self.ui.TablePlan.setRowCount(self.ui.TablePlan.rowCount() + 1)
+        list_df = df.values.tolist()
 
-            for j in range(self.ui.TablePlan.columnCount()):
-                self.ui.TablePlan.setItem(i, j, QTableWidgetItem(str(row[j])))
+        self.ui.TablePlan.setRowCount(len(list_df) + 1)
+
+        for i in range(len(list_df)):
+        # Добавление строки
+
+            for j in range(len(list_df[0])):
+                #self.ui.TablePlan.setItem(i, j, QtGui.QTableWidgetItem(str(row[j])))
+                self.ui.TablePlan.setItem(i, j, QTableWidgetItem(str(list_df[i][j])))
 
     def upd_c_info(self):
         tmpDF = self.parent.DF
         
-        tmpDF = tmpDF.loc[tmpDF['Состояние'].isin(["План"])]
+        tmpDF = tmpDF.loc[tmpDF['Состояние'].isin(["На станке"])]
         self.c_pj_plan = tmpDF.loc[tmpDF['Номер станка'].isin([self.get_id_machine()])]
 
         df = self.c_pj_plan

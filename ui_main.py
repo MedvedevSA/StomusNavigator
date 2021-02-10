@@ -198,14 +198,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_5.addWidget(self.frame_4)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 166, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Minimum)
 
         self.verticalLayout_5.addItem(self.verticalSpacer_3)
 
         self.frame_6 = QFrame(self.page_1)
         self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setMinimumSize(QSize(0, 200))
-        self.frame_6.setMaximumSize(QSize(16777215, 300))
+        self.frame_6.setMinimumSize(QSize(0, 400))
+        self.frame_6.setMaximumSize(QSize(16777215, 600))
         self.frame_6.setFrameShape(QFrame.StyledPanel)
         self.frame_6.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.frame_6)
