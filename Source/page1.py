@@ -120,9 +120,12 @@ class Ui_Page1(MainWindow):
             subprocess.Popen( ["explorer", path] )
     
     def add_note(self):
+
+        date = datetime.datetime.today().strftime("%H:%M   %d/%m/%Y")
+
         note = {
-            "prog":"Stas",
-            "date" : "12.12.21",
+            "prog" : "Stas",
+            "date" : date,
             "note" : "Приплыли"
         }
         path = self.journal_path
@@ -154,13 +157,14 @@ class Ui_Page1(MainWindow):
         
 
     def updJournal(self):
-        text = self.get_journal()
-        print(text)
-
+        journal = self.get_journal()
+        br = "------------------------------------------------------------\n"
         string = str()
 
-        for index in range(len(text['data'])):
-            string += text['data'][index]["note"] + '\n'
+        for index in range(len(journal['data'])):
+            date = '\n\t' + journal['data'][index]["date"] + '\n'
+            note = journal['data'][index]["note"] + '\n'
+            string += date + note + br
 
 
         self.ui.Journal.setText(string)
