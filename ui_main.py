@@ -210,16 +210,16 @@ class Ui_MainWindow(object):
         self.frame_6.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.frame_6)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.tableWidget = QTableWidget(self.frame_6)
-        if (self.tableWidget.columnCount() < 3):
-            self.tableWidget.setColumnCount(3)
-        if (self.tableWidget.rowCount() < 20):
-            self.tableWidget.setRowCount(20)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setRowCount(20)
-        self.tableWidget.setColumnCount(3)
+        self.TablePlan = QTableWidget(self.frame_6)
+        if (self.TablePlan.columnCount() < 3):
+            self.TablePlan.setColumnCount(3)
+        if (self.TablePlan.rowCount() < 20):
+            self.TablePlan.setRowCount(20)
+        self.TablePlan.setObjectName(u"TablePlan")
+        self.TablePlan.setRowCount(20)
+        self.TablePlan.setColumnCount(3)
 
-        self.horizontalLayout_5.addWidget(self.tableWidget)
+        self.horizontalLayout_5.addWidget(self.TablePlan)
 
         self.frame_5 = QFrame(self.frame_6)
         self.frame_5.setObjectName(u"frame_5")
