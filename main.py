@@ -54,6 +54,13 @@ class MainWindow(QMainWindow):
         ########################################################################
         self.show()
        
+    def eventFilter(self, source, event):
+        if event.type() == QEvent.ContextMenu and source is self.ui.TablePlan:
+            self.ui_page1.TableEvent(source, event)
+
+        return super().eventFilter(source, event)
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

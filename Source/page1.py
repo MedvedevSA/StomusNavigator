@@ -1,6 +1,7 @@
 from main import *
 
 class Ui_Page1(MainWindow):
+    
     def __init__(self, par):
         self.cur_MachineName = "#1 Nexturn"
         self.c_pj_plan = []
@@ -18,7 +19,7 @@ class Ui_Page1(MainWindow):
         ########################################################################
         self.ui.Btn_curOpenPj.clicked.connect(lambda: self.Btn_c_OpenPjClicked())
         
-
+        self.ui.TablePlan.installEventFilter(self.parent)
 
         ## ButtonGroup - инициализация 
         ########################################################################
@@ -45,7 +46,8 @@ class Ui_Page1(MainWindow):
         actual_col = [
                         "Номер станка",
                         "Производственный код",
-                        "Количество штук в партии"]
+                        "Количество штук в партии",
+                        "Что это такое"]
         tmpDF = self.parent.DF
         
         #tmpDF = tmpDF[tmpDF['Состояние'].str.contains("На станке",case=False, na=False)]     
@@ -95,6 +97,7 @@ class Ui_Page1(MainWindow):
         self.cur_MachineName = btn.text()
         self.upd_c_info()
         self.upd_plan_info()
+        self.upd_BookMarks()
 
     def BtnAddNoteClicked(self):
         self.add_note()
@@ -112,9 +115,13 @@ class Ui_Page1(MainWindow):
         filename, filetype = QFileDialog.getOpenFileName(self.parent,
                                 "Выбрать файл",
                                 def_path,
-                                "Siemens NX(*.prt);;Pdf(*.pdf);;\
-                                Word(*.docm);;\
-                                MS Excel(*.xlsx);;Text file(*.txt);;All Files(*)")
+                                "Все (*.prt;*.txt;*.xlsx;*.pdf;*.docm;*.docx);;\
+                                Siemens NX (*.prt);;\
+                                PDF (*.pdf);;\
+                                MS Word (*.docm;*.docx);;\
+                                MS Excel (*.xlsx;*.xlsm);;\
+                                Text file (*.txt);;\
+                                All Files (*)")
         if filename is not "":
             path = Path(filename)
             subprocess.Popen( ["explorer", path] )
@@ -168,3 +175,25 @@ class Ui_Page1(MainWindow):
 
 
         self.ui.Journal.setText(string)
+
+    def upd_BookMarks(self):
+        pass
+
+    def TableEvent (self, source, event):
+        menu = QMenu()
+        newAction = QAction("В закладки")
+        newAction.triggered.connect(lambda: self.addBookmark())
+        menu.addAction(newAction)
+
+        menu.exec_(event.globalPos())
+
+    def addBookmark(self):
+        row = self.ui.TablePlan.currentRow()
+        col = self.ui.TablePlan.currentColumn()
+        value = self.ui.TablePlan.item(row, col).text()
+        
+        print(f"R:{row}\nC:{col}\nV:{value}") 
+    
+
+
+
